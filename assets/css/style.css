@@ -91,6 +91,13 @@ form{
   cursor: pointer;
 }
 
+#score{
+  font-family:serif;
+
+  font-size: 19px;
+}
+
+
 .footer{
   width: 10px;
   height: 130px;

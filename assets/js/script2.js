@@ -44,13 +44,18 @@ if(secondsLeft === 0) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
             // Calls function to create and append image
+        
             sendMessage();
           }
     },1000)
 }
+
+
   function sendMessage(){
+  
     alert("Your time is up!");
     timeEl.textContent=" ";
+ 
   }
 
 function firstQuestion(){
@@ -81,22 +86,25 @@ answerDiv.appendChild(answerbBtn);
  
 
 answerDiv.children[0].addEventListener("click",function(){
-  
+ 
   if(questionEl.textContent===allQuestions[3].question){
+timeEl.remove();
     inCorrectAnswers++;
-    pEl.innerHTML="Wrong";
-    timeEl.textContent=-10;
+    secondsLeft-=5;
     quizEl.remove();
    var isOk=confirm("Thank you for answering all the questions. Would you like to see your score?");
 
 if(isOk==true){
 
-createAForm();  
+createAForm(); 
+
 document.querySelector("#my-form").addEventListener(
   "submit",
   (e)=>{
     e.preventDefault();
     alert("Thank you for participating!");
+    wrapperEl.remove();
+
   }
 )
    
@@ -114,13 +122,12 @@ else{
 else{
   if(answerDiv.children[0].textContent===allQuestions[index-1].answer){
     correctAnswer++;
-    pEl.innerHTML="Correct";
+
 
  }
   else if(!answerDiv.children[0].textContent===allQuestions[index-1].answer){
     inCorrectAnswers++;
-    
-    pEl.innerHTML="Wrong";
+    secondsLeft-=5;
   }
 
  
@@ -142,19 +149,23 @@ else{
 answerDiv.children[1].addEventListener("click",function(){
 
   if(questionEl.textContent==allQuestions[3].question){
+    timeEl.remove();
+    secondsLeft-=5;
    inCorrectAnswers++;
-   
-    quizEl.remove();
+  quizEl.remove();
     var isOk=confirm("Thank you for answering all the questions. Would you like to see your score?");
   
 if(isOk==true){
 
-createAForm();  
+createAForm(); 
 document.querySelector("#my-form").addEventListener(
   "submit",
   (e)=>{
+   
     e.preventDefault();
+
     alert("Thank you for participating!");
+    wrapperEl.remove();
   }
 )
    
@@ -173,11 +184,11 @@ else{
  else{
   if(answerDiv.children[1].textContent===allQuestions[index-1].answer){
     correctAnswer++;
-    pEl.innerHTML="Correct";
+    
    }
   else{
     inCorrectAnswers++;
-    pEl.innerHTML="Wrong";
+    secondsLeft-=5;
   }
 
   questionEl.innerHTML=allQuestions[index].question;
@@ -195,8 +206,9 @@ else{
 
 answerDiv.children[2].addEventListener("click",function(){
   if(questionEl.textContent==question4.question){
+    timeEl.remove();
   inCorrectAnswers++;
-  pEl.innerHTML="Wrong";
+  secondsLeft-=5;
   
     quizEl.remove();
     var isOk=confirm("Thank you for answering all the questions. Would you like to see your score?");
@@ -204,11 +216,13 @@ answerDiv.children[2].addEventListener("click",function(){
   if(isOk==true){
 
 createAForm();  
+
 document.querySelector("#my-form").addEventListener(
   "submit",
   (e)=>{
     e.preventDefault();
     alert("Thank you for participating!");
+    wrapperEl.remove();
   }
 )
    
@@ -226,11 +240,11 @@ else{
 
   if(answerDiv.children[2].textContent===allQuestions[index-1].answer){
     correctAnswer++;
-    pEl.innerHTML="Correct";
+   
 
     }  else{
     inCorrectAnswers++;
-    pEl.innerHTML="Wrong";
+    secondsLeft-=5;
   
  
   questionEl.innerHTML=allQuestions[index].question;
@@ -249,8 +263,9 @@ else{
 
 answerDiv.children[3].addEventListener("click",function(){
   if(questionEl.textContent==question4.question){
+    timeEl.remove();
     correctAnswer++;
-    pEl.innerHTML="Correct";
+  
     
       quizEl.remove();
       var isOk=confirm("Thank you for answering all the questions. Would you like to see your score?");
@@ -258,11 +273,13 @@ answerDiv.children[3].addEventListener("click",function(){
 if(isOk==true){
 
 createAForm();  
+
 document.querySelector("#my-form").addEventListener(
   "submit",
   (e)=>{
     e.preventDefault();
     alert("Thank you for participating!");
+    wrapperEl.remove();
   }
 )
    
@@ -280,11 +297,12 @@ else{
 
   if(answerDiv.children[3].textContent===allQuestions[index-1].answer){
     correctAnswer++;
-    pEl.innerHTML="Correct";
+   
    }
   else{
     inCorrectAnswers++;
-    pEl.innerHTML="Wrong";
+    secondsLeft-=5;
+
   
   }
   
@@ -311,13 +329,17 @@ myForm.setAttribute("id","my-form");
   wrapperEl.append(myForm);
   var myInput=document.createElement("input");
   myInput.setAttribute("id","initials");
+  myInput.setAttribute("placeholder","Type your initials");
   myInput.innerHTML="Type your initils."
   myForm.appendChild(myInput);
   var mySubmitBtn=document.createElement("button");
   mySubmitBtn.setAttribute("id","submit");
   mySubmitBtn.innerHTML="Submit";
   myForm.append(mySubmitBtn);
-
+  var scoreDisplay=document.createElement("p");
+  scoreDisplay.setAttribute("id","score");
+  myForm.appendChild(scoreDisplay);
+ scoreDisplay.innerHTML="Correct Answers: "+correctAnswer+ " and your score is: "+ correctAnswer*10;
 
 }
 
