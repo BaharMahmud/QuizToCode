@@ -1,4 +1,5 @@
 
+//questions and answers block that will be presented in the quiz web page.
 var allQuestions=[ question1 = { question:"What does HTML stand for?",
  answers:["HyperText MarkUp Language", "Home Tool Markup Language","Hypertext machine Language",
  "Home To Make Lasagna"],
@@ -20,7 +21,7 @@ answer:"The World Wide Web Consortium"},
 
 
 
-
+//elements that will be used for append
 var wrapperEl=document.querySelector(".wrapper");
 var startBtn=document.querySelector("#start");
 var timeEl = document.querySelector(".time");
@@ -29,7 +30,7 @@ correctAnswer=0;
 inCorrectAnswers=0;
 index=1;
 
-
+//time block displayed for the quiz to finish
  startBtn.onclick=function setTime(){
     var timerInterval = setInterval(function() {
         secondsLeft--;
@@ -61,7 +62,7 @@ if(secondsLeft === 0 ) {
 
 function firstQuestion(){
 
-
+//elements that will be created every time any button is clicked
 var quizEl=document.createElement("div");
 quizEl.setAttribute("class","quiz");
 wrapperEl.append(quizEl);
@@ -75,6 +76,8 @@ var pEl=document.createElement("p");
  quizEl.appendChild(pEl);
  pEl.innerHTML="";
 
+
+//creates answer options every time question is answered
   for(var i=0;i<allQuestions. length;i++){
 var answerbBtn=document.createElement("button");
 answerbBtn.setAttribute("class","btn");
@@ -85,9 +88,10 @@ answerDiv.appendChild(answerbBtn);
  
   
  
-
+//if first option is clicked
 answerDiv.children[0].addEventListener("click",function(){
- 
+ //if that option is the last question of the quiz
+
   if(questionEl.textContent===allQuestions[3].question){
 timeEl.remove();
     inCorrectAnswers++;
@@ -122,6 +126,7 @@ else{
   }
 
 else{
+  //collects correct and incorrect answers
   if(answerDiv.children[0].textContent===allQuestions[index-1].answer){
     correctAnswer++;
 
@@ -147,9 +152,9 @@ else{
 })
  
 
-
+//if second option is clicked
 answerDiv.children[1].addEventListener("click",function(){
-
+//if that option is the last question of the quiz
   if(questionEl.textContent==allQuestions[3].question){
     timeEl.remove();
     secondsLeft-=5;
@@ -186,6 +191,7 @@ else{
 
 
  else{
+  //collects correct and incorrect answers
   if(answerDiv.children[1].textContent===allQuestions[index-1].answer){
     correctAnswer++;
     
@@ -208,7 +214,11 @@ else{
  
     })
 
+    
+    // if third option is clicked
 answerDiv.children[2].addEventListener("click",function(){
+  //if that option is the last question of the quiz
+
   if(questionEl.textContent==question4.question){
     timeEl.remove();
   inCorrectAnswers++;
@@ -243,7 +253,7 @@ else{
 
   }
 
-
+//collects correct and incorrect answers
   if(answerDiv.children[2].textContent===allQuestions[index-1].answer){
     correctAnswer++;
    
@@ -266,8 +276,10 @@ else{
 
 
 
-
+//if the last option is clicked
 answerDiv.children[3].addEventListener("click",function(){
+  //if that option is the last question of the quiz
+
   if(questionEl.textContent==question4.question){
     timeEl.remove();
     correctAnswer++;
@@ -302,7 +314,7 @@ else{
 
   }
 
-
+//collects correct and incorrect answers
   if(answerDiv.children[3].textContent===allQuestions[index-1].answer){
     correctAnswer++;
    
@@ -330,7 +342,7 @@ else{
 
  
 
-
+//create a form to add my initials and submit when all the questions are answered.
 function createAForm(){
   var myForm=document.createElement("form");
 myForm.setAttribute("id","my-form");
