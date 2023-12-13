@@ -24,7 +24,7 @@ answer:"The World Wide Web Consortium"},
 var wrapperEl=document.querySelector(".wrapper");
 var startBtn=document.querySelector("#start");
 var timeEl = document.querySelector(".time");
- var secondsLeft=30;
+ var secondsLeft=40;
 correctAnswer=0;
 inCorrectAnswers=0;
 index=1;
@@ -34,13 +34,14 @@ index=1;
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timeEl.textContent = secondsLeft+ " seconds" ;
-if(secondsLeft=== 29 ){
+if(secondsLeft=== 39 ){
   
   firstQuestion();
   
 }
 
-if(secondsLeft === 0) {
+
+if(secondsLeft === 0 ) {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
             // Calls function to create and append image
@@ -103,7 +104,8 @@ document.querySelector("#my-form").addEventListener(
   (e)=>{
     e.preventDefault();
     alert("Thank you for participating!");
-    wrapperEl.remove();
+     wrapperEl.remove();
+    secondsLeft=secondsLeft-60;
 
   }
 )
@@ -166,6 +168,8 @@ document.querySelector("#my-form").addEventListener(
 
     alert("Thank you for participating!");
     wrapperEl.remove();
+    secondsLeft=secondsLeft-60;
+
   }
 )
    
@@ -223,6 +227,8 @@ document.querySelector("#my-form").addEventListener(
     e.preventDefault();
     alert("Thank you for participating!");
     wrapperEl.remove();
+    secondsLeft=secondsLeft-60;
+
   }
 )
    
@@ -280,6 +286,8 @@ document.querySelector("#my-form").addEventListener(
     e.preventDefault();
     alert("Thank you for participating!");
     wrapperEl.remove();
+    secondsLeft=secondsLeft-60;
+
   }
 )
    
@@ -340,6 +348,7 @@ myForm.setAttribute("id","my-form");
   scoreDisplay.setAttribute("id","score");
   myForm.appendChild(scoreDisplay);
  scoreDisplay.innerHTML="Correct Answers: "+correctAnswer+ " and your score is: "+ correctAnswer*10;
+ localStorage.setItem("Correct answer", scoreDisplay.innerHTML);
 
 }
 
@@ -348,7 +357,7 @@ myForm.setAttribute("id","my-form");
 
 
 
-setTime();
+
   
 
 
