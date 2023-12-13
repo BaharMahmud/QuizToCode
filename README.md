@@ -3,6 +3,13 @@ You can clone the repository to your local from "https://github.com/BaharMahmud/
 This contains; CSS,JS and Index.Html files in it.
 Deployed URL is : "https://baharmahmud.github.io/QuizToCode/".
 
+## User Story
+
+```
+AS A coding boot camp student
+I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
+SO THAT I can gauge my progress compared to my peers
+```
 
 
 ## Acceptance Criteria
